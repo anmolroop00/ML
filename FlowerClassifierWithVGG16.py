@@ -117,8 +117,8 @@ print(modelnew.summary())
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '17_flowers/17_flowers/train/'
-validation_data_dir = '17_flowers/17_flowers/validation/'
+train_data_dir = '/root/mlops_project/download_classify/17_flowers/17_flowers/train/'
+validation_data_dir = '/root/mlops_project/download_classify/17_flowers/17_flowers/validation'
 
 train_datagen = ImageDataGenerator(
       rescale=1./255,
