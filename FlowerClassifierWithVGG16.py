@@ -1,11 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# # Face Classifier with VGG16
-# 
-# ### Loading the VGG16 Model
-
-# In[1]:
 
 
 from keras.applications import VGG16
@@ -22,7 +14,6 @@ model = VGG16(weights = 'imagenet',
 
 # ### Inpsecting each layer
 
-# In[2]:
 
 
 # Let's print our layers 
@@ -31,9 +22,6 @@ for (i,layer) in enumerate(model.layers):
 
 
 # ### Let's freeze all layers except the top 4 
-
-# In[3]:
-
 
 from keras.applications import VGG16
 
@@ -58,7 +46,7 @@ for (i,layer) in enumerate(model.layers):
 
 # ### Let's make a function that returns our FC Head
 
-# In[4]:
+
 
 
 def addTopModel(bottom_model, num_classes, D=256):
@@ -72,21 +60,15 @@ def addTopModel(bottom_model, num_classes, D=256):
     return top_model
 
 
-# In[5]:
-
 
 model.input
 
-
-# In[6]:
 
 
 model.layers
 
 
 # ### Let's add our FC Head back onto VGG
-
-# In[7]:
 
 
 from keras.models import Sequential
@@ -104,15 +86,11 @@ modelnew = Model(inputs=model.input, outputs=FC_Head)
 print(modelnew.summary())
 
 
-# In[ ]:
-
-
-
 
 
 # ### Loading our Flowers Dataset
 
-# In[8]:
+
 
 
 from keras.preprocessing.image import ImageDataGenerator
@@ -149,8 +127,6 @@ validation_generator = validation_datagen.flow_from_directory(
 
 
 # ### Training our top layers
-
-# In[9]:
 
 
 from keras.optimizers import RMSprop
@@ -195,8 +171,6 @@ modelnew.save("flowers_vgg.h5")
 # ## Can we speed this up?
 # #### Let's try re-sizing the image to 64 x 64
 
-# In[10]:
-
 
 from keras.applications import VGG16
 
@@ -233,8 +207,8 @@ from keras.models import Model
 from keras.optimizers import RMSprop
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '17_flowers/17_flowers/train/'
-validation_data_dir = '17_flowers/17_flowers/validation/'
+train_data_dir = '/root/mlops_project/download_classify/17_flowers/17_flowers/train/'
+validation_data_dir = '/root/mlops_project/download_classify/17_flowers/17_flowers/validation/'
 
 train_datagen = ImageDataGenerator(
       rescale=1./255,
@@ -332,7 +306,6 @@ history = model.fit_generator(
 model.save("flowers_vgg_64.h5")
 
 
-# In[ ]:
 
 
 
