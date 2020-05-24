@@ -77,7 +77,7 @@ from keras.layers import Conv2D, MaxPooling2D, ZeroPadding2D
 from keras.layers.normalization import BatchNormalization
 from keras.models import Model
 
-num_classes = 17
+num_classes = 17 
 
 FC_Head = addTopModel(model, num_classes)
 
@@ -292,7 +292,7 @@ model.compile(loss = 'categorical_crossentropy',
 
 nb_train_samples = 1190
 nb_validation_samples = 170
-epochs = 25
+epochs = 8
 batch_size = 32
 
 history = model.fit_generator(
@@ -304,6 +304,15 @@ history = model.fit_generator(
     validation_steps = nb_validation_samples // batch_size)
 
 model.save("flowers_vgg_64.h5")
+final_accuracy=history.history["val_accuracy"][-1]
+print(final_accuracy)
+
+
+import os
+if final_accuracy < 0.88:
+    os.system("curl --user '<admin>:<anmol>' http://192.168.1.26:8080/view/mlops/job/retrain/build?token=anmol")
+else:
+    print("Your New accuracy=",final_accuracy)
 
 
 
