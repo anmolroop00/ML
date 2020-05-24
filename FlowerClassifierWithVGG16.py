@@ -11,17 +11,10 @@ model = VGG16(weights = 'imagenet',
                  include_top = False, 
                  input_shape = (img_rows, img_cols, 3))
 
-
-# ### Inpsecting each layer
-
-
-
 # Let's print our layers 
 for (i,layer) in enumerate(model.layers):
     print(str(i) + " "+ layer.__class__.__name__, layer.trainable)
 
-
-# ### Let's freeze all layers except the top 4 
 
 from keras.applications import VGG16
 
@@ -95,8 +88,8 @@ print(modelnew.summary())
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '/root/17_flowers/17_flowers/train'
-validation_data_dir = '/root/17_flowers/17_flowers/validation'
+train_data_dir ='root/17_flowers/17_flowers/train/'
+validation_data_dir ='root/17_flowers/17_flowers/validation/'
 
 train_datagen = ImageDataGenerator(
       rescale=1./255,
@@ -207,9 +200,8 @@ from keras.models import Model
 from keras.optimizers import RMSprop
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '/root/17_flowers/17_flowers/train'
-validation_data_dir = '/root/17_flowers/17_flowers/validation'
-
+train_data_dir ='root/17_flowers/17_flowers/train/'
+validation_data_dir ='root/17_flowers/17_flowers/validation/'
 train_datagen = ImageDataGenerator(
       rescale=1./255,
       rotation_range=20,
