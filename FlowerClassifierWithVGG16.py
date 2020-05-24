@@ -147,7 +147,7 @@ modelnew.compile(loss = 'categorical_crossentropy',
 
 nb_train_samples = 1190
 nb_validation_samples = 170
-epochs = 2
+epochs = 3
 batch_size = 16
 
 history = modelnew.fit_generator(
@@ -284,7 +284,7 @@ model.compile(loss = 'categorical_crossentropy',
 
 nb_train_samples = 1190
 nb_validation_samples = 170
-epochs = 8
+epochs = 15
 batch_size = 32
 
 history = model.fit_generator(
