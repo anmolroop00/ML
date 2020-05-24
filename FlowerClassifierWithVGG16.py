@@ -77,7 +77,7 @@ from keras.layers import Conv2D, MaxPooling2D, ZeroPadding2D
 from keras.layers.normalization import BatchNormalization
 from keras.models import Model
 
-num_classes = 12
+num_classes = 17
 
 FC_Head = addTopModel(model, num_classes)
 
@@ -247,7 +247,7 @@ for layer in vgg16.layers:
     layer.trainable = False
     
 # Number of classes in the Flowers-17 dataset
-num_classes = 12
+num_classes = 17
 
 FC_Head = addTopModel(vgg16, num_classes)
 
